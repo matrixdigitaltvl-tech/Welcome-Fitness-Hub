@@ -1,0 +1,1033 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Welcome Fitness Hub | Tirunelveli</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Oswald:wght@500;700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,400,0,0&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: #090909;
+    --surface: #111111;
+    --border: #292929;
+    --accent: #c6ff00;
+    --text: #ffffff;
+    --muted: #a5a5a5;
+    --placeholder: rgba(165, 165, 165, 0.6);
+    --radius: 8px;
+    --wrap: 1216px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; text-decoration: none; }
+  img { max-width: 100%; display: block; }
+  .material-symbols-outlined {
+    font-family: 'Material Symbols Outlined';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 20px;
+    line-height: 1;
+    display: inline-block;
+    -webkit-font-feature-settings: 'liga';
+    font-feature-settings: 'liga';
+    user-select: none;
+  }
+
+  .wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 32px; }
+  section { padding: 96px 0; position: relative; }
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 12px; font-weight: 600; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--accent);
+  }
+  .eyebrow::before {
+    content: ""; width: 8px; height: 8px; border-radius: 50%;
+    background: var(--accent);
+  }
+  h1, h2, h3, h4 {
+    font-family: 'Oswald', 'Inter', sans-serif;
+    font-weight: 700; text-transform: uppercase; letter-spacing: 0.02em; line-height: 1.1;
+  }
+  h2 { font-size: clamp(30px, 4.2vw, 48px); margin-top: 16px; }
+  h3 { font-size: 24px; }
+  h4 { font-size: 18px; }
+  .lead { color: var(--muted); font-size: 16px; max-width: 768px; margin-top: 20px; }
+  .section-head { max-width: 768px; margin-bottom: 56px; }
+
+  /* Buttons */
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 12px;
+    padding: 16px 32px; border-radius: var(--radius); border: 1px solid transparent;
+    font-family: 'Oswald', sans-serif; font-weight: 700; font-size: 16px;
+    letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer;
+    transition: transform .2s, box-shadow .2s, background .2s, color .2s;
+  }
+  .btn-primary {
+    background: var(--accent); color: #090909;
+    box-shadow: 0 10px 15px -3px rgba(198,255,0,.2), 0 4px 6px -4px rgba(198,255,0,.2);
+  }
+  .btn-primary:hover { transform: translateY(-2px); }
+  .btn-ghost { background: transparent; color: var(--text); border-color: var(--border); }
+  .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+  .btn:disabled { opacity: .6; cursor: not-allowed; transform: none; }
+
+  /* Images */
+  .brand-mark img, .hero-emblem img { width: 100%; height: 100%; object-fit: contain; }
+  .hero-emblem img { width: 70%; height: 70%; }
+  .lead-photo img, .trainer-photo img { width: 100%; height: 100%; object-fit: cover; }
+  .lead-photo img { border-radius: 8px; }
+  .t-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .brand-mark { overflow: hidden; }
+
+  /* Header */
+  .header {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(9,9,9,.92); backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+  }
+  .header .wrap { display: flex; align-items: center; justify-content: space-between; height: 80px; gap: 24px; }
+  .brand { display: flex; align-items: center; gap: 12px; }
+  .brand-mark {
+    width: 44px; height: 44px; border-radius: 10px; background: var(--accent);
+    display: grid; place-items: center; color: #090909; flex-shrink: 0;
+  }
+  .brand-text strong {
+    display: block; font-family: 'Oswald', sans-serif; font-size: 18px;
+    letter-spacing: .06em; text-transform: uppercase; line-height: 1.1;
+  }
+  .brand-text small { color: var(--muted); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; }
+  .nav { display: flex; gap: 28px; }
+  .nav a {
+    font-size: 13px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase;
+    color: var(--muted); transition: color .2s;
+  }
+  .nav a:hover { color: var(--accent); }
+  .menu-toggle {
+    display: none; background: none; border: 0; color: var(--text); cursor: pointer;
+  }
+
+  /* Hero */
+  .hero {
+    min-height: 100vh; display: flex; align-items: center;
+    padding: 140px 0 100px; overflow: hidden;
+    background:
+      linear-gradient(180deg, rgba(9,9,9,.35) 0%, rgba(9,9,9,.92) 90%),
+      radial-gradient(circle at 80% 30%, rgba(198,255,0,.12), transparent 50%),
+      url('hero-gym.jpg') center/cover no-repeat,
+      linear-gradient(135deg, #1a1a1a 0%, #0b0b0b 100%);
+  }
+  .hero-emblem {
+    position: absolute; right: 6%; top: 18%; width: 360px; height: 360px;
+    border-radius: 50%; border: 1px solid rgba(198,255,0,.25);
+    display: grid; place-items: center; opacity: .8;
+  }
+  .hero-emblem::before {
+    content: ""; position: absolute; inset: 24px; border-radius: 50%;
+    border: 1px dashed rgba(198,255,0,.25);
+  }
+  .hero-emblem .material-symbols-outlined { font-size: 140px; color: var(--accent); }
+  .hero-tag {
+    display: inline-flex; align-items: center; gap: 10px; padding: 6px 14px;
+    border: 1px solid var(--border); border-radius: 999px; font-size: 12px;
+    letter-spacing: .12em; text-transform: uppercase; color: var(--muted);
+  }
+  .hero h1 {
+    font-size: clamp(44px, 8vw, 104px); margin-top: 24px; max-width: 900px;
+  }
+  .hero h1 span { color: var(--accent); }
+  .hero-sub {
+    font-family: 'Oswald', sans-serif; font-size: clamp(18px, 2.2vw, 24px);
+    letter-spacing: .04em; text-transform: uppercase; margin-top: 20px; color: #e6e6e6;
+  }
+  .hero-desc { color: var(--muted); max-width: 672px; margin-top: 20px; font-size: 17px; }
+  .hero-ctas { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 40px; }
+  .hero-bottom {
+    display: flex; flex-wrap: wrap; gap: 24px; margin-top: 56px;
+  }
+  .hero-bottom .pill { display: flex; align-items: center; gap: 12px; font-size: 14px; color: #e6e6e6; }
+  .icon-box {
+    width: 32px; height: 32px; border: 1px solid var(--border); border-radius: 6px;
+    display: grid; place-items: center; color: var(--accent); background: var(--surface); flex-shrink: 0;
+  }
+  .icon-box .material-symbols-outlined { font-size: 18px; }
+
+  /* Offers */
+  .offers-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .card {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
+    padding: 32px; display: flex; flex-direction: column; gap: 16px;
+    transition: border-color .25s, transform .25s;
+  }
+  .card:hover { border-color: var(--accent); transform: translateY(-4px); }
+  .card-top { display: flex; justify-content: space-between; align-items: center; }
+  .card-icon {
+    width: 48px; height: 48px; border-radius: var(--radius); border: 1px solid var(--border);
+    display: grid; place-items: center; color: var(--accent); background: var(--bg);
+  }
+  .card p { color: var(--muted); font-size: 15px; }
+  .card-link {
+    margin-top: auto; padding-top: 16px; border-top: 1px solid var(--border);
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 13px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--accent);
+  }
+
+  /* Transformations */
+  .transform-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .t-card {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 12px; overflow: hidden;
+  }
+  .t-photo {
+    height: 320px; position: relative;
+    background: linear-gradient(160deg, #222 0%, #0a0a0a 100%);
+    display: grid; place-items: center; color: #3a3a3a;
+  }
+  .t-photo .material-symbols-outlined { font-size: 72px; }
+  .t-photo .tag {
+    position: absolute; top: 16px; left: 16px; background: var(--accent); color: #090909;
+    padding: 6px 12px; border-radius: 6px; font-family: 'Oswald', sans-serif; font-size: 13px;
+    letter-spacing: .08em; text-transform: uppercase; font-weight: 700;
+  }
+  .t-body { padding: 24px; }
+  .t-body h3 { font-size: 22px; }
+  .t-body .goal { color: var(--accent); font-size: 13px; letter-spacing: .1em; text-transform: uppercase; font-weight: 600; margin-top: 6px; }
+  .t-body p { color: var(--muted); margin-top: 10px; font-size: 15px; }
+  .transform-cta { display: flex; justify-content: center; margin-top: 56px; }
+
+  /* Plans */
+  .plans-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; align-items: stretch; }
+  .plan {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
+    padding: 32px 28px; display: flex; flex-direction: column; position: relative;
+  }
+  .plan.popular { border-color: var(--accent); box-shadow: 0 20px 40px -20px rgba(198,255,0,.35); transform: translateY(-12px); }
+  .plan-badge {
+    position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
+    background: var(--accent); color: #090909; padding: 8px 18px; border-radius: 999px;
+    font-family: 'Oswald', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; white-space: nowrap;
+  }
+  .plan-tag { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+  .plan h3 { font-size: 28px; margin-top: 10px; }
+  .plan .desc { color: var(--muted); font-size: 14px; margin-top: 12px; min-height: 72px; }
+  .price {
+    margin-top: 24px; padding: 20px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+  }
+  .price .amount { font-family: 'Oswald', sans-serif; font-size: 48px; font-weight: 700; color: var(--accent); line-height: 1; }
+  .price .sub { font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-top: 8px; }
+  .plan ul { list-style: none; margin: 24px 0; display: grid; gap: 12px; flex: 1; }
+  .plan li { display: flex; gap: 10px; font-size: 14px; color: #e6e6e6; }
+  .plan li .material-symbols-outlined { font-size: 18px; color: var(--accent); }
+  .plan .btn { width: 100%; padding: 14px 20px; font-size: 14px; }
+  .plans-footer {
+    margin-top: 72px; display: grid; grid-template-columns: 1fr 1fr; gap: 24px;
+  }
+  .info-box { border: 1px solid var(--border); border-radius: 12px; padding: 28px; background: var(--surface); }
+  .info-box .label { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+  .info-box .big { font-family: 'Oswald', sans-serif; font-size: 40px; color: var(--accent); margin-top: 6px; }
+  .info-box p { color: var(--muted); font-size: 14px; margin-top: 8px; }
+  .info-box ul { list-style: none; margin-top: 12px; display: grid; gap: 8px; }
+  .info-box li { display: flex; gap: 10px; font-size: 14px; color: #e6e6e6; }
+  .info-box li .material-symbols-outlined { font-size: 18px; color: var(--accent); }
+  .call-join { font-family: 'Oswald', sans-serif; font-size: 24px; color: var(--text); display: block; margin-top: 8px; }
+
+  /* Trainers */
+  .trainer-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+  .trainer { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+  .trainer-photo {
+    height: 320px; background: linear-gradient(160deg, #1d1d1d 0%, #0a0a0a 100%);
+    display: grid; place-items: center; color: #3a3a3a;
+  }
+  .trainer-photo .material-symbols-outlined { font-size: 96px; }
+  .trainer-body { padding: 28px; }
+  .trainer-body .role { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); font-weight: 600; }
+  .trainer-body h3 { font-size: 26px; margin-top: 8px; }
+  .trainer-body .exp { font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-top: 6px; }
+  .trainer-body p { color: var(--muted); margin-top: 14px; font-size: 15px; }
+  .trainer-foot {
+    margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--border);
+    display: flex; justify-content: space-between; align-items: center; font-size: 13px;
+    letter-spacing: .08em; text-transform: uppercase; color: var(--muted);
+  }
+  .trainer-foot .material-symbols-outlined { color: var(--accent); }
+  .section-cta { display: flex; justify-content: center; margin-top: 56px; }
+
+  /* Lead / Form */
+  .lead-grid { display: grid; grid-template-columns: 1fr 1.25fr; gap: 56px; align-items: start; }
+  .lead-intro .panel {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
+    padding: 32px; margin-top: 32px;
+  }
+  .lead-photo {
+    height: 224px; border-radius: 8px; margin-bottom: 28px;
+    background: linear-gradient(135deg, #1f1f1f 0%, #0a0a0a 100%);
+    display: grid; place-items: center; color: #3a3a3a; border: 1px solid var(--border);
+  }
+  .lead-photo .material-symbols-outlined { font-size: 64px; }
+  .lead-intro h3 { font-size: 26px; }
+  .lead-intro p { color: var(--muted); margin-top: 12px; font-size: 15px; }
+  .highlights { display: grid; gap: 16px; margin-top: 24px; }
+  .highlights div { display: flex; align-items: center; gap: 12px; font-size: 15px; }
+  .highlights .material-symbols-outlined { color: var(--accent); font-size: 22px; }
+  .visit { margin-top: 28px; padding-top: 20px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; gap: 12px; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+
+  .form-card {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 40px;
+  }
+  .form-head { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); padding-bottom: 20px; margin-bottom: 28px; }
+  .form-head h3 { font-size: 24px; }
+  .form-head span { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+  form { display: grid; gap: 22px; }
+  .field { display: grid; gap: 8px; }
+  .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .field label {
+    font-size: 14px; font-weight: 600; letter-spacing: .07em; text-transform: uppercase;
+  }
+  .field label .req { color: var(--accent); }
+  .input, .select {
+    width: 100%; background: #111; border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 17px 17px; font: 400 15px 'Inter', sans-serif; color: var(--text);
+    transition: border-color .2s, box-shadow .2s; appearance: none; -webkit-appearance: none;
+  }
+  .input::placeholder { color: var(--placeholder); }
+  .input:focus, .select:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(198,255,0,.15); }
+  .select-wrap { position: relative; }
+  .select { cursor: pointer; padding-right: 48px; }
+  .select option { background: #111; color: #fff; }
+  .select-wrap .material-symbols-outlined {
+    position: absolute; right: 16px; top: 50%; transform: translateY(-50%);
+    color: var(--muted); pointer-events: none;
+  }
+  .select:invalid { color: var(--placeholder); }
+  .select option[value=""] { color: var(--placeholder); }
+  .form-foot { text-align: center; font-size: 12px; color: var(--muted); line-height: 1.6; }
+  .form-msg {
+    display: none; padding: 16px 18px; border-radius: var(--radius); font-size: 14px;
+  }
+  .form-msg.show { display: block; }
+  .form-msg.ok { background: rgba(198,255,0,.1); border: 1px solid var(--accent); color: var(--accent); }
+  .form-msg.err { background: rgba(255,80,80,.08); border: 1px solid #ff5050; color: #ff8a8a; }
+
+  /* Reviews */
+  .review-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .review {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
+    padding: 32px; display: flex; flex-direction: column; gap: 20px;
+  }
+  .stars { display: flex; gap: 4px; color: var(--accent); }
+  .stars .material-symbols-outlined { font-size: 18px; font-variation-settings: 'FILL' 1; }
+  .review blockquote { font-size: 16px; color: #e6e6e6; flex: 1; }
+  .review-author {
+    display: flex; align-items: center; gap: 14px; padding-top: 20px; border-top: 1px solid var(--border);
+  }
+  .avatar {
+    width: 40px; height: 40px; border-radius: var(--radius); border: 1px solid var(--border);
+    display: grid; place-items: center; font-family: 'Oswald', sans-serif; color: var(--accent); background: var(--bg);
+  }
+  .review-author strong { display: block; font-size: 14px; letter-spacing: .05em; text-transform: uppercase; }
+  .review-author small { color: var(--muted); font-size: 12px; }
+  .review-note {
+    margin-top: 40px; display: flex; justify-content: space-between; align-items: center; gap: 24px;
+    border: 1px solid var(--border); border-radius: 12px; padding: 24px 28px; background: var(--surface);
+  }
+  .review-note p { color: var(--muted); font-size: 13px; }
+  .review-note strong { font-family: 'Oswald', sans-serif; font-size: 20px; letter-spacing: .03em; text-transform: uppercase; }
+
+  /* Social */
+  .social-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .social-card {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 40px;
+    display: flex; flex-direction: column; gap: 16px;
+  }
+  .social-card:hover { border-color: var(--accent); }
+  .social-card .icon {
+    width: 56px; height: 56px; border-radius: var(--radius); border: 1px solid var(--border);
+    display: grid; place-items: center; color: var(--accent); background: var(--bg);
+  }
+  .social-card h3 { font-size: 26px; }
+  .social-card p { color: var(--muted); font-size: 15px; }
+  .social-card .handle {
+    margin-top: 8px; padding: 14px 18px; border: 1px solid var(--border); border-radius: var(--radius);
+    display: flex; justify-content: space-between; align-items: center; font-size: 14px;
+  }
+  .social-card .handle strong { font-family: 'Oswald', sans-serif; letter-spacing: .05em; text-transform: uppercase; }
+  .social-card .btn { margin-top: 8px; }
+
+  /* Location */
+  .loc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: stretch; }
+  .loc-details { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 40px; display: flex; flex-direction: column; gap: 28px; }
+  .loc-row { display: flex; gap: 20px; }
+  .loc-row .label { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+  .loc-row .value { font-size: 16px; margin-top: 6px; color: #f0f0f0; }
+  .loc-row .value a:hover { color: var(--accent); }
+  .loc-row-split { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .loc-ctas { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: auto; }
+  .loc-ctas .btn { padding: 16px 20px; font-size: 14px; }
+  .map {
+    position: relative; min-height: 520px; border-radius: 12px; overflow: hidden;
+    border: 1px solid var(--border);
+    background:
+      repeating-linear-gradient(0deg, rgba(255,255,255,.03) 0 1px, transparent 1px 48px),
+      repeating-linear-gradient(90deg, rgba(255,255,255,.03) 0 1px, transparent 1px 48px),
+      linear-gradient(rgba(9,9,9,.6), rgba(9,9,9,.6)),
+      url('map-bg.jpg') center/cover no-repeat,
+      #141414;
+    display: grid; place-items: center;
+  }
+  .map-pin {
+    display: flex; flex-direction: column; align-items: center; gap: 16px; text-align: center; padding: 24px;
+  }
+  .map-pin .material-symbols-outlined { font-size: 56px; color: var(--accent); }
+  .map-pin p { color: var(--muted); font-size: 14px; max-width: 280px; }
+
+  /* Footer */
+  .footer { border-top: 1px solid var(--border); padding: 80px 0 0; background: #070707; }
+  .footer-top { display: grid; grid-template-columns: 1.3fr 1fr 1.2fr; gap: 48px; }
+  .footer h4 { font-size: 14px; letter-spacing: .12em; color: var(--muted); margin-bottom: 20px; }
+  .footer-brand p { color: var(--muted); font-size: 14px; margin-top: 14px; max-width: 460px; }
+  .footer-tag { font-family: 'Oswald', sans-serif; font-size: 16px; letter-spacing: .08em; margin-top: 20px; color: var(--accent); }
+  .footer-addr { display: flex; gap: 12px; margin-top: 20px; color: var(--muted); font-size: 14px; }
+  .footer-addr .material-symbols-outlined { color: var(--accent); }
+  .footer-list { list-style: none; display: grid; gap: 14px; }
+  .footer-list a { font-size: 14px; letter-spacing: .06em; text-transform: uppercase; color: #d7d7d7; transition: color .2s; }
+  .footer-list a:hover { color: var(--accent); }
+  .footer-contact { display: grid; gap: 16px; }
+  .footer-contact a { display: flex; gap: 12px; align-items: center; font-size: 14px; color: #d7d7d7; }
+  .footer-contact a:hover { color: var(--accent); }
+  .footer-contact .material-symbols-outlined { color: var(--accent); font-size: 18px; }
+  .footer-bottom {
+    margin-top: 56px; padding: 24px 0; border-top: 1px solid var(--border);
+    display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap;
+    font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted);
+  }
+
+  /* WhatsApp floating */
+  .wa-float {
+    position: fixed; right: 24px; bottom: 24px; width: 56px; height: 56px; border-radius: 50%;
+    background: #25d366; color: #fff; display: grid; place-items: center; z-index: 200;
+    box-shadow: 0 10px 25px rgba(37,211,102,.35); transition: transform .2s;
+  }
+  .wa-float:hover { transform: scale(1.06); }
+  .wa-float svg { width: 32px; height: 32px; fill: currentColor; }
+
+  /* Responsive */
+  @media (max-width: 1100px) {
+    .nav { gap: 18px; }
+    .nav a { font-size: 12px; }
+    .plans-grid { grid-template-columns: repeat(2, 1fr); }
+    .plan.popular { transform: none; }
+  }
+  @media (max-width: 960px) {
+    .nav, .header .btn-primary.desktop-only { display: none; }
+    .menu-toggle { display: block; }
+    .nav.open {
+      display: flex; flex-direction: column; position: absolute; top: 80px; left: 0; right: 0;
+      background: var(--bg); padding: 24px 32px; border-bottom: 1px solid var(--border);
+    }
+    .offers-grid, .transform-grid, .review-grid { grid-template-columns: 1fr 1fr; }
+    .lead-grid, .loc-grid, .social-grid, .footer-top, .plans-footer { grid-template-columns: 1fr; }
+    .hero-emblem { display: none; }
+    .trainer-grid { grid-template-columns: 1fr; }
+    section { padding: 72px 0; }
+  }
+  @media (max-width: 640px) {
+    .wrap { padding: 0 20px; }
+    .offers-grid, .transform-grid, .review-grid, .plans-grid { grid-template-columns: 1fr; }
+    .plan.popular { transform: none; }
+    .field-row, .loc-row-split, .loc-ctas { grid-template-columns: 1fr; }
+    .form-card, .loc-details, .social-card { padding: 28px 22px; }
+    .review-note { flex-direction: column; align-items: flex-start; }
+    .btn { width: 100%; }
+    .hero-ctas .btn { width: 100%; }
+    .map { min-height: 360px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="wrap">
+    <a href="#home" class="brand" aria-label="Welcome Fitness Hub home">
+      <div class="brand-mark"><img src="logo.png" alt="Welcome Fitness Hub logo" /></div>
+      <div class="brand-text">
+        <strong>Welcome Fitness Hub</strong>
+        <small>KTC Nagar • Tirunelveli</small>
+      </div>
+    </a>
+    <nav class="nav" id="nav">
+      <a href="#home">Home</a>
+      <a href="#about">About Us</a>
+      <a href="#programs">Programs</a>
+      <a href="#membership">Membership</a>
+      <a href="#trainers">Trainers</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a href="#get-started" class="btn btn-primary desktop-only" style="padding:12px 20px;font-size:14px;">Join Now</a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Open menu">
+      <span class="material-symbols-outlined">menu</span>
+    </button>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-emblem" aria-hidden="true"><img src="logo.png" alt="" /></div>
+  <div class="wrap">
+    <span class="hero-tag">Stronger Every Day. Better Every Step.</span>
+    <h1>Your Fitness Journey <span>Starts Here.</span></h1>
+    <p class="hero-sub">Build Strength. Transform Your Body. Become Your Best Self.</p>
+    <p class="hero-desc">Whether your goal is to lose weight, gain healthy weight, build muscle, or improve your overall fitness, Welcome Fitness Hub is here to help you move forward. With the right training environment, dedicated equipment, and fitness guidance, take the first step towards a stronger and healthier you.</p>
+    <div class="hero-ctas">
+      <a href="#get-started" class="btn btn-primary">Get Started Now <span class="material-symbols-outlined">arrow_forward</span></a>
+      <a href="#programs" class="btn btn-ghost">View Programs</a>
+    </div>
+    <div class="hero-bottom">
+      <div class="pill"><span class="icon-box"><span class="material-symbols-outlined">verified</span></span>Expert Trainers</div>
+      <div class="pill"><span class="icon-box"><span class="material-symbols-outlined">fitness_center</span></span>Modern Equipment</div>
+      <div class="pill"><span class="icon-box"><span class="material-symbols-outlined">calendar_month</span></span>Flexible Memberships</div>
+    </div>
+  </div>
+</section>
+
+<!-- OFFERS -->
+<section id="about" style="background:#0d0d0d;">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">What We Offer</span>
+      <h2>Everything You Need To Reach Your Fitness Goals.</h2>
+      <p class="lead">No matter where you're starting from, we have the right training approach to help you move forward. Find the training program that matches your fitness goals.</p>
+    </div>
+    <div class="offers-grid" id="programs-offers">
+      <article class="card">
+        <div class="card-top"><div class="card-icon"><span class="material-symbols-outlined">exercise</span></div></div>
+        <h3>Muscle Building</h3>
+        <p>Build strength, develop muscle, and work towards a stronger physique with structured training and consistent workouts.</p>
+        <div class="card-link">Learn More <span class="material-symbols-outlined">arrow_forward</span></div>
+      </article>
+      <article class="card">
+        <div class="card-top"><div class="card-icon"><span class="material-symbols-outlined">monitor_weight</span></div></div>
+        <h3>Weight Loss</h3>
+        <p>Work towards a healthier lifestyle through guided workouts, cardio sessions, and consistent fitness routines.</p>
+        <div class="card-link">Learn More <span class="material-symbols-outlined">arrow_forward</span></div>
+      </article>
+      <article class="card">
+        <div class="card-top"><div class="card-icon"><span class="material-symbols-outlined">trending_up</span></div></div>
+        <h3>Weight Gain</h3>
+        <p>Follow a structured fitness approach designed to support healthy weight gain and muscle development.</p>
+        <div class="card-link">Learn More <span class="material-symbols-outlined">arrow_forward</span></div>
+      </article>
+      <article class="card">
+        <div class="card-top"><div class="card-icon"><span class="material-symbols-outlined">favorite</span></div></div>
+        <h3>Cardio Training</h3>
+        <p>Improve your stamina, endurance, and cardiovascular fitness with dedicated cardio sessions.</p>
+        <div class="card-link">Learn More <span class="material-symbols-outlined">arrow_forward</span></div>
+      </article>
+      <article class="card">
+        <div class="card-top"><div class="card-icon"><span class="material-symbols-outlined">sports_gymnastics</span></div></div>
+        <h3>Strength Training</h3>
+        <p>Develop overall body strength and improve your physical performance with guided exercises.</p>
+        <div class="card-link">Learn More <span class="material-symbols-outlined">arrow_forward</span></div>
+      </article>
+      <article class="card">
+        <div class="card-top"><div class="card-icon"><span class="material-symbols-outlined">person</span></div></div>
+        <h3>Personal Training</h3>
+        <p>Get individual attention, workout guidance, and support based on your personal fitness goals.</p>
+        <div class="card-link">Learn More <span class="material-symbols-outlined">arrow_forward</span></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- TRANSFORMATIONS -->
+<section>
+  <div class="wrap">
+    <div class="section-head" style="text-align:center;margin-left:auto;margin-right:auto;">
+      <span class="eyebrow" style="justify-content:center;">Real Results</span>
+      <h2>Our Client Transformations</h2>
+    </div>
+    <div class="transform-grid">
+      <article class="t-card">
+        <div class="t-photo"><img src="transformation-1.jpg" alt="Client transformation" />
+          <span class="tag">Fat Loss</span>
+        </div>
+        <div class="t-body">
+          <h3>Praveen Kumar</h3>
+          <div class="goal">Fat Loss</div>
+          <p>Reduced fat and gained muscle mass in just 6 months.</p>
+        </div>
+      </article>
+      <article class="t-card">
+        <div class="t-photo"><img src="transformation-2.jpg" alt="Client transformation" />
+          <span class="tag">Bulk To Cut</span>
+        </div>
+        <div class="t-body">
+          <h3>Mr. Karthick</h3>
+          <div class="goal">Bulk To Cut</div>
+          <p>Reduced body fat percentage and gained muscle mass.</p>
+        </div>
+      </article>
+      <article class="t-card">
+        <div class="t-photo"><img src="transformation-3.jpg" alt="Client transformation" />
+          <span class="tag">Fat Loss</span>
+        </div>
+        <div class="t-body">
+          <h3>Mr. Balamurugan</h3>
+          <div class="goal">Fat Loss</div>
+          <p>Reduced fat and gained muscle mass in just 4 months.</p>
+        </div>
+      </article>
+    </div>
+    <div class="transform-cta">
+      <a href="#get-started" class="btn btn-primary">Let's Go <span class="material-symbols-outlined">arrow_forward</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- TRAINERS + PLANS (fees structure) -->
+<section id="trainers" style="background:#0d0d0d;">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Meet Our Team</span>
+      <h2>The People Behind Your Progress.</h2>
+      <p class="lead">The right guidance can make all the difference. Our trainers are here to guide you through your workouts, help you understand proper exercise techniques, and keep you motivated throughout your fitness journey. Whether you're a beginner or an experienced fitness enthusiast, get the support you need to keep improving.</p>
+    </div>
+    <div class="trainer-grid">
+      <article class="trainer">
+        <div class="trainer-photo"><img src="trainer-1.jpg" alt="Trainer Sheiksamsudeen" /></div>
+        <div class="trainer-body">
+          <span class="role">Trainer</span>
+          <h3>Sheiksamsudeen</h3>
+          <div class="exp">Experience: 8+ Years</div>
+          <p>Dedicated to helping members improve their fitness through proper workout guidance and consistent training.</p>
+          <div class="trainer-foot"><span>View Profile</span><span class="material-symbols-outlined">arrow_forward</span></div>
+        </div>
+      </article>
+      <article class="trainer">
+        <div class="trainer-photo"><img src="trainer-2.jpg" alt="Trainer Esakkimuthu" /></div>
+        <div class="trainer-body">
+          <span class="role">Trainer</span>
+          <h3>Esakkimuthu</h3>
+          <div class="exp">Experience: 12+ Years</div>
+          <p>Focused on supporting members with structured workouts and guidance throughout their fitness journey.</p>
+          <div class="trainer-foot"><span>View Profile</span><span class="material-symbols-outlined">arrow_forward</span></div>
+        </div>
+      </article>
+    </div>
+    <div class="section-cta">
+      <a href="#get-started" class="btn btn-ghost">Book A Trial</a>
+    </div>
+  </div>
+</section>
+
+<!-- MEMBERSHIP PLANS -->
+<section id="membership" style="padding-top:40px;">
+  <div class="wrap">
+    <div class="section-head" style="margin-left:auto;margin-right:auto;text-align:center;">
+      <span class="eyebrow" style="justify-content:center;">Membership</span>
+      <h2>Choose The Plan That Fits You.</h2>
+      <p class="lead" style="margin-left:auto;margin-right:auto;">Find the membership duration that works for your goals and your schedule.</p>
+    </div>
+    <div class="plans-grid" id="programs">
+      <div class="plan">
+        <span class="plan-tag">Plan 01</span>
+        <h3>Monthly</h3>
+        <p class="desc">A simple way to get started with your fitness journey and build a consistent workout routine.</p>
+        <div class="price">
+          <div class="amount">₹599</div>
+          <div class="sub">Single month commitment</div>
+        </div>
+        <ul>
+          <li><span class="material-symbols-outlined">check_circle</span>Complete Gym Access</li>
+          <li><span class="material-symbols-outlined">check_circle</span>Flexible Workout Hours</li>
+          <li><span class="material-symbols-outlined">check_circle</span>Basic Fitness Guidance</li>
+        </ul>
+        <a href="#get-started" class="btn btn-ghost">Choose Plan</a>
+      </div>
+      <div class="plan popular">
+        <div class="plan-badge">Most Popular</div>
+        <span class="plan-tag">Plan 02</span>
+        <h3>Quarterly</h3>
+        <p class="desc">Stay committed to your fitness goals and give yourself more time to develop consistency and strength.</p>
+        <div class="price">
+          <div class="amount">₹1399</div>
+          <div class="sub">Optimal habit building</div>
+        </div>
+        <ul>
+          <li><span class="material-symbols-outlined">check_circle</span>Complete Gym Access</li>
+          <li><span class="material-symbols-outlined">check_circle</span>Trainer Guidance Sessions</li>
+          <li><span class="material-symbols-outlined">check_circle</span>Progress Tracking</li>
+        </ul>
+        <a href="#get-started" class="btn btn-primary">Choose Plan</a>
+      </div>
+      <div class="plan">
+        <span class="plan-tag">Plan 03</span>
+        <h3>Half-Yearly</h3>
+        <p class="desc">Build long-term fitness habits and work towards steady improvements with a longer membership.</p>
+        <div class="price">
+          <div class="amount">₹2599</div>
+          <div class="sub">Medium term progression</div>
+        </div>
+        <ul>
+          <li><span class="material-symbols-outlined">check_circle</span>Complete Gym Access</li>
+          <li><span class="material-symbols-outlined">check_circle</span>Structured Training Plan</li>
+          <li><span class="material-symbols-outlined">check_circle</span>Progress Tracking</li>
+        </ul>
+        <a href="#get-started" class="btn btn-ghost">Choose Plan</a>
+      </div>
+      <div class="plan">
+        <span class="plan-tag">Plan 04</span>
+        <h3>Annual</h3>
+        <p class="desc">Make fitness a long-term commitment and stay focused on your goals throughout the year.</p>
+        <div class="price">
+          <div class="amount">₹4999</div>
+          <div class="sub">Full year discipline</div>
+        </div>
+        <ul>
+          <li><span class="material-symbols-outlined">check_circle</span>Complete Gym Access</li>
+          <li><span class="material-symbols-outlined">check_circle</span>Structured Training Plan</li>
+          <li><span class="material-symbols-outlined">check_circle</span>Priority Support</li>
+        </ul>
+        <a href="#get-started" class="btn btn-ghost">Choose Plan</a>
+      </div>
+    </div>
+
+    <div class="plans-footer">
+      <div class="info-box">
+        <div class="label">Standard First Time Entry Fees</div>
+        <div class="big">₹999</div>
+        <p>Registration + Monthly Fees. Contact us to know about the latest membership fees and available offers.</p>
+      </div>
+      <div class="info-box">
+        <div class="label">Personal Trainer</div>
+        <h4 style="margin-top:6px;">Available At An Additional Fee</h4>
+        <ul>
+          <li><span class="material-symbols-outlined">check</span>One-on-one training sessions</li>
+          <li><span class="material-symbols-outlined">check</span>Personalized workout plans</li>
+          <li><span class="material-symbols-outlined">check</span>Diet and recovery guidance</li>
+        </ul>
+        <div style="margin-top:16px;">
+          <div class="label">Call To Join</div>
+          <a class="call-join" href="tel:+917092396373">7092396373</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LEAD COLLECTION + FORM -->
+<section id="get-started" style="background:#0d0d0d;">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Get Started</span>
+      <h2>Let's Build Your Stronger Self.</h2>
+      <p class="lead">Every fitness journey starts with a decision. Tell us about your fitness goals, and our team will help you find the right training program. Whether you want to lose weight, gain healthy weight, improve your cardio, build muscle, or develop overall strength, we're here to help you get started.</p>
+    </div>
+    <div class="lead-grid">
+      <div class="lead-intro">
+        <div class="lead-photo"><img src="intro-training.jpg" alt="Training floor at Welcome Fitness Hub" /></div>
+        <h3>Your Goals. Our Guidance.</h3>
+        <p>Take the first step towards a healthier and stronger lifestyle. Tell us what you want to achieve, and let us help you get started.</p>
+        <div class="highlights">
+          <div><span class="material-symbols-outlined">check_circle</span>Personalized training programs</div>
+          <div><span class="material-symbols-outlined">check_circle</span>Certified trainer support</div>
+          <div><span class="material-symbols-outlined">check_circle</span>Flexible membership options</div>
+        </div>
+        <div class="visit">
+          <span>Visit Us</span>
+          <span>Arham Plaza Rooftop</span>
+        </div>
+      </div>
+
+      <div class="form-card">
+        <div class="form-head">
+          <h3>Enquiry Form</h3>
+          <span>* Required</span>
+        </div>
+        <form id="leadForm" novalidate>
+          <div class="field">
+            <label for="name">Full Name <span class="req">*</span></label>
+            <input class="input" id="name" name="name" type="text" placeholder="Enter your full name." autocomplete="name" required />
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label for="phone">Phone Number <span class="req">*</span></label>
+              <input class="input" id="phone" name="phone" type="tel" placeholder="Enter your mobile number." autocomplete="tel" inputmode="tel" pattern="[0-9+\s\-]{8,15}" required />
+            </div>
+            <div class="field">
+              <label for="email">Email Address <span class="req">*</span></label>
+              <input class="input" id="email" name="email" type="email" placeholder="Enter your email address." autocomplete="email" required />
+            </div>
+          </div>
+          <div class="field">
+            <label for="goal">Interested In <span class="req">*</span></label>
+            <div class="select-wrap">
+              <select class="select" id="goal" name="fitness goal" required>
+                <option value="" selected disabled>Select Your Fitness Goal.</option>
+                <option>Lose Weight</option>
+                <option>Gain Healthy Weight</option>
+                <option>Build Muscle</option>
+                <option>Improve Cardio</option>
+                <option>Develop Overall Strength</option>
+              </select>
+              <span class="material-symbols-outlined">expand_more</span>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary" id="submitBtn">Get Started Now <span class="material-symbols-outlined">arrow_forward</span></button>
+          <div class="form-msg" id="formMsg" role="status"></div>
+          <p class="form-foot">Our team will contact you to understand your fitness goals and provide more information about our membership and training programs.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section id="reviews">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Member Experiences</span>
+      <h2>Real People. Real Experiences.</h2>
+      <p class="lead">Every fitness journey is different, but having the right environment and support makes the experience better. Hear from the people who are part of our fitness community.</p>
+    </div>
+    <div class="review-grid">
+      <article class="review">
+        <div class="stars">
+          <span class="material-symbols-outlined">star</span><span class="material-symbols-outlined">star</span><span class="material-symbols-outlined">star</span><span class="material-symbols-outlined">star</span><span class="material-symbols-outlined">star</span>
+        </div>
+        <blockquote>"Great trainers and a friendly atmosphere. Perfect for beginners!"</blockquote>
+        <div class="review-author">
+          <div class="avatar">S</div>
+          <div><strong>Santhosh Raj M</strong><small>Customer</small></div>
+        </div>
+      </article>
+      <article class="review">
+        <div class="stars">
+          <span class="material-symbols-outlined">star</span><span class="material-symbols-outlined">star</span><span class="material-symbols-outlined">star</span><span class="material-symbols-outlined">star</span><span class="material-symbols-outlined">star</span>
+        </div>
+        <blockquote>"Nellai's one of the best affordable fitness centers. The equipment is high quality and in brand new condition."</blockquote>
+        <div class="review-author">
+          <div class="avatar">A</div>
+          <div><strong>Asarutheen</strong><small>Gym Member</small></div>
+        </div>
+      </article>
+      <article class="review">
+        <div class="stars">
+          <span class="material-symbols-outlined">star</span><span class="material-symbols-outlined">star</span><span class="material-symbols-outlined">star</span><span class="material-symbols-outlined">star</span><span class="material-symbols-outlined">star</span>
+        </div>
+        <blockquote>"Good strength training setup and very supportive staff."</blockquote>
+        <div class="review-author">
+          <div class="avatar">H</div>
+          <div><strong>Hemthath</strong><small>Gym Member</small></div>
+        </div>
+      </article>
+    </div>
+    <div class="review-note">
+      <div>
+        <strong>Join our community</strong>
+        <p>Individual experiences may vary. Reviews are shared with permission.</p>
+      </div>
+      <a href="#get-started" class="btn btn-primary" style="padding:12px 22px;font-size:14px;">Start Your Journey</a>
+    </div>
+  </div>
+</section>
+
+<!-- WHATSAPP & INSTAGRAM -->
+<section style="background:#0d0d0d;">
+  <div class="wrap">
+    <div class="section-head" style="text-align:center;margin-left:auto;margin-right:auto;">
+      <span class="eyebrow" style="justify-content:center;">Stay Connected</span>
+      <h2>Talk To Us. Follow Along.</h2>
+    </div>
+    <div class="social-grid">
+      <article class="social-card">
+        <div class="icon"><svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm5.8 14.13c-.25.7-1.44 1.34-1.98 1.42-.5.07-1.14.1-1.84-.12-.42-.13-.97-.31-1.67-.61-2.94-1.27-4.86-4.23-5.01-4.43-.14-.2-1.2-1.6-1.2-3.05 0-1.45.76-2.16 1.03-2.46.27-.3.58-.37.78-.37h.56c.18 0 .42-.07.66.5.25.6.84 2.07.92 2.22.07.15.12.32.02.52-.1.2-.15.32-.3.5-.15.17-.31.39-.45.52-.15.15-.3.31-.13.61.17.3.75 1.24 1.61 2 1.11.99 2.04 1.3 2.34 1.45.3.15.47.12.65-.07.17-.2.75-.87.95-1.17.2-.3.4-.25.67-.15.27.1 1.73.82 2.02.97.3.15.5.22.57.35.07.12.07.72-.18 1.42z"/></svg></div>
+        <h3>Let's Talk Fitness.</h3>
+        <p>Have questions about memberships, training programs, or our facilities? We're just a message away.</p>
+        <div class="handle"><span>WhatsApp</span><strong>8608656373</strong></div>
+        <a href="https://wa.me/918608656373" class="btn btn-primary" target="_blank" rel="noopener">Chat On WhatsApp <span class="material-symbols-outlined">arrow_forward</span></a>
+      </article>
+      <article class="social-card">
+        <div class="icon"><span class="material-symbols-outlined">photo_camera</span></div>
+        <h3>Follow Our Fitness Journey.</h3>
+        <p>Explore workout sessions, gym activities, fitness updates, and the progress of our community.</p>
+        <div class="handle"><span>Instagram</span><strong>Welcome Fitness Hub</strong></div>
+        <a href="https://www.instagram.com/welcomefitnesshub_2025?knvt=M2V3MnVvMDJvOTdu" class="btn btn-ghost" target="_blank" rel="noopener">Follow Us On Instagram <span class="material-symbols-outlined">arrow_forward</span></a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- LOCATION & ADDRESS -->
+<section id="contact">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Find Us</span>
+      <h2>Your Next Workout Is Closer Than You Think.</h2>
+      <p class="lead">Looking for a gym that supports your fitness goals? Visit us, explore our facilities, meet our trainers, and find the membership that works for you.</p>
+    </div>
+    <div class="loc-grid">
+      <div class="loc-details">
+        <div class="loc-row">
+          <div class="icon-box"><span class="material-symbols-outlined">location_on</span></div>
+          <div>
+            <div class="label">Address</div>
+            <div class="value">Arham Plaza, Rooftop,<br />KTC Nagar, Tirunelveli, Tamil Nadu</div>
+          </div>
+        </div>
+        <div class="loc-row">
+          <div class="icon-box"><span class="material-symbols-outlined">call</span></div>
+          <div>
+            <div class="label">Phone Numbers</div>
+            <div class="value"><a href="tel:+918608656373">8608656373</a> &nbsp;|&nbsp; <a href="tel:+917092396373">7092396373</a></div>
+          </div>
+        </div>
+        <div class="loc-row-split">
+          <div class="loc-row">
+            <div class="icon-box"><span class="material-symbols-outlined">mail</span></div>
+            <div>
+              <div class="label">Email</div>
+              <div class="value"><a href="mailto:sheiksamsudeen786@gmail.com">sheiksamsudeen786@gmail.com</a></div>
+            </div>
+          </div>
+          <div class="loc-row">
+            <div class="icon-box"><span class="material-symbols-outlined">schedule</span></div>
+            <div>
+              <div class="label">Opening Hours</div>
+              <div class="value"><span style="white-space:nowrap;">Morning: 5AM – 10AM</span><br /><span style="white-space:nowrap;">Evening: 5PM – 10PM</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="loc-ctas">
+          <a class="btn btn-primary" href="https://maps.app.goo.gl/mYBRonAg7d88btsx5?g_st=ac" target="_blank" rel="noopener">
+            <span class="material-symbols-outlined">directions</span> Get Directions
+          </a>
+          <a class="btn btn-ghost" href="tel:+918608656373">
+            <span class="material-symbols-outlined">call</span> Call Us Now
+          </a>
+        </div>
+      </div>
+      <a class="map" href="https://maps.app.goo.gl/mYBRonAg7d88btsx5?g_st=ac" target="_blank" rel="noopener" aria-label="Open interactive map">
+        <div class="map-pin">
+          <span class="material-symbols-outlined">location_on</span>
+          <strong style="font-family:'Oswald',sans-serif;letter-spacing:.06em;text-transform:uppercase;">Open Interactive Map</strong>
+          <p>Arham Plaza, Rooftop, KTC Nagar, Tirunelveli</p>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="brand">
+          <div class="brand-mark"><img src="logo.png" alt="Welcome Fitness Hub logo" /></div>
+          <div class="brand-text">
+            <strong>Welcome Fitness Hub</strong>
+            <small>KTC Nagar • Tirunelveli</small>
+          </div>
+        </div>
+        <div class="footer-tag">Stronger Every Day. Better Every Step.</div>
+        <p>Whether your goal is to lose weight, gain healthy weight, build muscle, or improve your overall fitness, Welcome Fitness Hub is here to help you move forward.</p>
+        <div class="footer-addr"><span class="material-symbols-outlined">location_on</span><span>Arham Plaza, Rooftop, KTC Nagar, Tirunelveli</span></div>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <ul class="footer-list">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#programs">Programs</a></li>
+          <li><a href="#membership">Membership</a></li>
+          <li><a href="#trainers">Trainers</a></li>
+          <li><a href="#reviews">Reviews</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact &amp; Social</h4>
+        <div class="footer-contact">
+          <a href="tel:+918608656373"><span class="material-symbols-outlined">call</span>8608656373</a>
+          <a href="mailto:sheiksamsudeen786@gmail.com"><span class="material-symbols-outlined">mail</span>sheiksamsudeen786@gmail.com</a>
+          <a href="https://www.instagram.com/welcomefitnesshub_2025?knvt=M2V3MnVvMDJvOTdu" target="_blank" rel="noopener"><span class="material-symbols-outlined">photo_camera</span>Welcome Fitness Hub</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Welcome Fitness Hub. All rights reserved.</span>
+      <span>Stronger Every Day. Better Every Step.</span>
+    </div>
+  </div>
+</footer>
+
+<!-- FLOATING WHATSAPP -->
+<a class="wa-float" href="https://wa.me/918608656373" target="_blank" rel="noopener" aria-label="Chat on WhatsApp with Welcome Fitness Hub">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm5.8 14.13c-.25.7-1.44 1.34-1.98 1.42-.5.07-1.14.1-1.84-.12-.42-.13-.97-.31-1.67-.61-2.94-1.27-4.86-4.23-5.01-4.43-.14-.2-1.2-1.6-1.2-3.05 0-1.45.76-2.16 1.03-2.46.27-.3.58-.37.78-.37h.56c.18 0 .42-.07.66.5.25.6.84 2.07.92 2.22.07.15.12.32.02.52-.1.2-.15.32-.3.5-.15.17-.31.39-.45.52-.15.15-.3.31-.13.61.17.3.75 1.24 1.61 2 1.11.99 2.04 1.3 2.34 1.45.3.15.47.12.65-.07.17-.2.75-.87.95-1.17.2-.3.4-.25.67-.15.27.1 1.73.82 2.02.97.3.15.5.22.57.35.07.12.07.72-.18 1.42z"/></svg>
+</a>
+
+<script>
+  // ---- Config ----
+  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzEZsgvrtIKmBX6xdGFclkAI9jdcp5TkKxYdzKcAgNftkZ1AUjFFEhv13wmNL-0GnLT/exec";
+
+  // ---- Mobile menu ----
+  const menuToggle = document.getElementById("menuToggle");
+  const nav = document.getElementById("nav");
+  menuToggle.addEventListener("click", () => nav.classList.toggle("open"));
+  nav.querySelectorAll("a").forEach(a => a.addEventListener("click", () => nav.classList.remove("open")));
+
+  // ---- Form submit ----
+  const form = document.getElementById("leadForm");
+  const submitBtn = document.getElementById("submitBtn");
+  const msg = document.getElementById("formMsg");
+
+  function showSuccess() {
+    msg.className = "form-msg ok show";
+    msg.textContent = "Thank you! Our team will contact you shortly to discuss your fitness goals.";
+    form.reset();
+    submitBtn.disabled = false;
+  }
+
+  function showError() {
+    msg.className = "form-msg err show";
+    msg.textContent = "Something went wrong. Please check your connection and try again.";
+    submitBtn.disabled = false;
+  }
+
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+
+    const data = {
+      name: document.getElementById("name").value.trim(),
+      email: document.getElementById("email").value.trim(),
+      phone: document.getElementById("phone").value.trim(),
+      "fitness goal": document.getElementById("goal").value
+    };
+
+    const url = SCRIPT_URL + "?" + new URLSearchParams(data);
+
+    submitBtn.disabled = true;
+    msg.className = "form-msg";
+
+    fetch(url, { method: "GET", mode: "no-cors" })
+      .then(() => showSuccess())
+      .catch(() => showError());
+  });
+</script>
+</body>
+</html>
